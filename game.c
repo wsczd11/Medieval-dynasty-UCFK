@@ -56,8 +56,8 @@ static void display_column (uint8_t row_pattern, uint8_t current_column)
 
 int main (void)
 {
-    uint8_t paretner_choes;
-    uint8_t current_choes = 0;
+    uint8_t partner_choice;
+    uint8_t current_choice = 0;
     uint8_t current_column = 0;
 
     system_init ();
@@ -82,21 +82,21 @@ int main (void)
         navswitch_update ();
 
         if (navswitch_push_event_p (NAVSWITCH_EAST)) {
-            if (current_choes == 4) {
-                current_choes = 0;
+            if (current_choice == 4) {
+                current_choice = 0;
             } else {
-                current_choes++;
+                current_choice++;
             }
         }
         if (navswitch_push_event_p (NAVSWITCH_WEST)) {
-            if (current_choes == 0) {
-                current_choes = 4;
+            if (current_choice == 0) {
+                current_choice = 4;
             } else {
-                current_choes--;
+                current_choice--;
             }
         }
 
-        display_column (bitmap[current_choes * 5 + current_column], current_column);
+        display_column (bitmap[current_choice * 5 + current_column], current_column);
 
         current_column++;
 
@@ -109,14 +109,21 @@ int main (void)
                 pacer_wait();
                 button_update();
                 if (button_push_event_p(0)) {
-                    ir_uart_putc (current_choes);
+                    ir_uart_putc (current_choice);
                 }
                 if (ir_uart_read_ready_p()) {
-                    paretner_choes = ir_uart_getc();
+                    partner_choice = ir_uart_getc();
                 }
+
             }
         }
     }
+
+static void compare (uint8_t current_choes,uint8_t paretner_choes) {
+
+
+
+}
 
 
 }
