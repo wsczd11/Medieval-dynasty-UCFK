@@ -22,7 +22,7 @@ static const pio_t cols[] = {
     LEDMAT_COL4_PIO, LEDMAT_COL5_PIO
 };
 
-
+//Different choices
 static const uint8_t bitmap[] = {
     0x00, 0x10, 0x3E, 0x10, 0x00,      //sword
     0x00, 0x1E, 0x3E, 0x1E, 0x00,      //shield
@@ -31,25 +31,28 @@ static const uint8_t bitmap[] = {
     0x00, 0x38, 0x3E, 0x3A, 0x00       //grenade
 };
 
-static const uint8_t close[] = {
+//Turn off the screen
+static const uint8_t turnoff_screen[] = {
     0x00, 0x00, 0x00, 0x00, 0x00,
 };
 
-static const uint8_t winner[] = {
+//Display the letter 'W'
+static const uint8_t winner_screen[] = {
     0x0E, 0x30, 0x0E, 0x30, 0x0E
 };
 
-static const uint8_t loser[] = {
+//Display the letter 'L'
+static const uint8_t loser_screen[] = {
     0x00, 0x3F, 0x20, 0x20, 0x00
 };
 
-static const uint8_t same[] = {
+//Display the letter 'S'
+static const uint8_t equal_screen[] = {
     0x00, 0x24, 0x2A, 0x12, 0x00
 };
 
 static void display_column (uint8_t row_pattern, uint8_t current_column)
 {
-    /* TODO */
     for (int i = 0; i < 5; i++) {
         pio_output_high(cols[i]);
     }
@@ -67,35 +70,35 @@ static void display_column (uint8_t row_pattern, uint8_t current_column)
     }
 }
 
-// if one_choes win, return 0, else return 1.
-static int judgment(uint8_t one_choes, uint8_t another_choes)
+// If player1_choice win, return 0, else return 1. (Compare)
+static int compare_choice(uint8_t player1_choice, uint8_t player2_choice)
 {
-    if (one_choes == 0) {
-        if (another_choes == 2 || another_choes == 3) {
+    if (player1_choice == 0) {
+        if (player2_choice == 2 || player2_choice == 3) {
             return 0;
         } else {
             return 1;
         }
-    } else if (one_choes == 1) {
-        if (another_choes == 0 || another_choes == 4) {
+    } else if (player1_choice == 1) {
+        if (player2_choice == 0 || player2_choice == 4) {
             return 0;
         } else {
             return 1;
         }
-    } else if (one_choes == 2) {
-        if (another_choes == 1 || another_choes == 4) {
+    } else if (player1_choice == 2) {
+        if (player2_choice == 1 || player2_choice == 4) {
             return 0;
         } else {
             return 1;
         }
-    } else if (one_choes == 3) {
-        if (another_choes == 1 || another_choes == 2) {
+    } else if (player1_choice == 3) {
+        if (player2_choice == 1 || player2_choice == 2) {
             return 0;
         } else {
             return 1;
         }
     } else {
-        if (another_choes == 0 || another_choes == 3) {
+        if (player2_choice == 0 || player2_choice == 3) {
             return 0;
         } else {
             return 1;
@@ -103,6 +106,7 @@ static int judgment(uint8_t one_choes, uint8_t another_choes)
     }
 }
 
+//Display 'W' on Winner screen
 static void winner_display(void)
 {
     uint8_t current_column = 0;
@@ -110,7 +114,7 @@ static void winner_display(void)
     while (1) {
         pacer_wait();
         navswitch_update ();
-        display_column (winner[current_column], current_column);
+        display_column (winner_screen[current_column], current_column);
         current_column++;
         if (current_column == 4) {
             current_column = 0;
@@ -121,6 +125,8 @@ static void winner_display(void)
     }
 }
 
+
+//Display 'L' on Loser screen
 static void loser_display(void)
 {
     uint8_t current_column = 0;
@@ -128,7 +134,7 @@ static void loser_display(void)
     while (1) {
         pacer_wait();
         navswitch_update ();
-        display_column (loser[current_column], current_column);
+        display_column (loser_screen[current_column], current_column);
         current_column++;
         if (current_column == 5) {
             current_column = 0;
@@ -139,14 +145,16 @@ static void loser_display(void)
     }
 }
 
-static void same_display(void)
+
+//Display 'S' on both of the screen when they have the same choice
+static void equal_display(void)
 {
     uint8_t current_column = 0;
     pacer_wait();
     while (1) {
         pacer_wait();
         navswitch_update ();
-        display_column (same[current_column], current_column);
+        display_column (equal_screen[current_column], current_column);
         current_column++;
         if (current_column == 5) {
             current_column = 0;
@@ -157,41 +165,41 @@ static void same_display(void)
     }
 }
 
-static void job(uint8_t current_choes)
+static void job(uint8_t current_choice)
 {
     uint8_t current_column = 0;
-    uint8_t paretner_choes;
+    uint8_t partner_choice;
     while(1) {
         pacer_wait();
-        display_column (close[current_column], current_column);
+        display_column (turnoff_screen[current_column], current_column);
         if (button_pressed_p()) {
-            ir_uart_putc (current_choes + 1);
+            ir_uart_putc (current_choice + 1);
         }
         if (ir_uart_read_ready_p()) {
-            paretner_choes = ir_uart_getc() - 1;
+            partner_choice = ir_uart_getc() - 1;
 
-            if (paretner_choes != 0 && paretner_choes != 1 && paretner_choes != 2 && paretner_choes != 3 && paretner_choes != 4 && paretner_choes == 5 && paretner_choes == 6 && paretner_choes == 7) {
+            if (partner_choice != 0 && partner_choice != 1 && partner_choice != 2 && partner_choice != 3 && partner_choice != 4 && partner_choice == 5 && partner_choice == 6 && partner_choice == 7) {
                 continue;
-            } else if (paretner_choes == 5) {
+            } else if (partner_choice == 5) {
                 loser_display();
                 break;
-            } else if (paretner_choes == 6) {
+            } else if (partner_choice == 6) {
                 winner_display();
                 break;
-            } else if (paretner_choes == 7) {
-                same_display();
+            } else if (partner_choice == 7) {
+                equal_display();
                 break;
-            } else if (current_choes == paretner_choes) {
+            } else if (current_choice == partner_choice) {
                 ir_uart_putc (7 + 1);
-                same_display();
+                equal_display();
                 break;
-            } else if (judgment(current_choes, paretner_choes) == 0) {
-                //current_choes win
+            } else if (compare_choice(current_choice, partner_choice) == 0) {
+                //current_choice win
                 ir_uart_putc (5 + 1);
                 winner_display();
                 break;
             } else {
-                //paretner_choes win
+                //partner_choice win
                 ir_uart_putc (6 + 1);
                 loser_display();
                 break;
@@ -206,7 +214,7 @@ static void job(uint8_t current_choes)
 
 int main (void)
 {
-    uint8_t current_choes = 0;
+    uint8_t current_choice = 0;
     uint8_t current_column = 0;
 
     system_init ();
@@ -230,21 +238,21 @@ int main (void)
             navswitch_update ();
 
             if (navswitch_push_event_p (NAVSWITCH_EAST)) {
-                if (current_choes == 4) {
-                    current_choes = 0;
+                if (current_choice == 4) {
+                    current_choice = 0;
                 } else {
-                    current_choes++;
+                    current_choice++;
                 }
             }
             if (navswitch_push_event_p (NAVSWITCH_WEST)) {
-                if (current_choes == 0) {
-                    current_choes = 4;
+                if (current_choice == 0) {
+                    current_choice = 4;
                 } else {
-                    current_choes--;
+                    current_choice--;
                 }
             }
 
-            display_column (bitmap[current_choes * 5 + current_column], current_column);
+            display_column (bitmap[current_choice * 5 + current_column], current_column);
 
             current_column++;
 
@@ -253,7 +261,7 @@ int main (void)
             }
 
             if (navswitch_push_event_p (NAVSWITCH_NORTH)) {
-                job(current_choes);
+                job(current_choice);
             }
         }
 }
