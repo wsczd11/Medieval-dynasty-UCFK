@@ -11,6 +11,7 @@
 #define PIEZO1_PIO PIO_DEFINE (PORT_D, 4)
 #define PIEZO2_PIO PIO_DEFINE (PORT_D, 6)
 
+
 /* Initialise speaker */
 void init_speaker(void)
 {
