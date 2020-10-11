@@ -24,6 +24,6 @@ of 3 options we got 5 options to choose from:
     - 'W' = Winner
     - 'L' = Loser
     - 'S' = Same/Tie
-7. Repeat this process till one of the player wins 3 games.
-8. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still have it on plus sound from the speaker.
+7. Repeat this process till one of the player wins 3 games. Everytime the person lost the round the speaker will start playing sound.
+8. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still be on.
 
