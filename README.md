@@ -14,7 +14,7 @@ of 3 options we got 5 options to choose from:
   - `Gun` ***beats*** `Grenade` and `Sword`, but ***lose*** to `Shield` and `Human`
   - `Grenade` ***beats*** `Human` and `Shield`, but ***lose*** to `Sword` and `Gun`
 
-## HOW TO PLAY (FIRST TO 3 GAMES)
+## HOW TO PLAY (FIRST TO WIN 3 GAMES)
 1.  Using your terminal create a folder using "git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git". 
 2.  Double click on the folder and open terminal.
 3.  Both players will type "Make" into the terminal to compile the game and "Make program" after the compile has finish to play the game.
