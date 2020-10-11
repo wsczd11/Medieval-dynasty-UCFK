@@ -1,7 +1,7 @@
-/** @file   beep1.c
-    @author Tawatchai Holmes (Andy), Zhedong Cao (Barry)
-    @date   15 OCT 2020
-    @Descr:  Makefile for game
+/** @file:      beep1.c
+    @author:    Tawatchai Holmes (Andy), Zhedong Cao (Barry)
+    @date:      15 OCT 2020
+    @Descr:     Main game file 
 */
 
 #include "system.h"
