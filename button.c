@@ -1,4 +1,4 @@
-/** @file   beep1.c
+/** @file   button.c
     @author Tawatchai Holmes (Andy), Zhedong Cao (Barry)
     @date   15 OCT 2020
     @Descr:  Makefile for game
