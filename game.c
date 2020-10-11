@@ -151,6 +151,7 @@ static void loser_display(uint8_t Player_1, uint8_t current_column)
         navswitch_update();
         display_column(loser_screen[current_column], current_column);
         current_column++;
+        use_speaker();
         if (current_column == 5) {
             current_column = 0;
         }
@@ -236,6 +237,7 @@ int main (void)
     ir_uart_init ();
     led_init ();
     inf();
+    init_speaker();
 
     while (1) {
 
@@ -266,15 +268,16 @@ int main (void)
         if (navswitch_push_event_p (NAVSWITCH_NORTH)) { //Comparision
             number += determine_outcome(Player_1, current_column);
         }
-        if (number == 3){
+        if (number == 3) {
             ir_uart_putc ('A');
             inf();
             break;
         }
         if (ir_uart_read_ready_p()) {
-            if (ir_uart_getc() == 'A'){ //Turn LED off for player who loss
+            if (ir_uart_getc() == 'A') { //Turn LED off for player who loss
                 led_off();
                 inf();
+                use_speaker();
                 break;
             }
         }

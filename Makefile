@@ -1,5 +1,5 @@
 # File:   Makefile
-# Author: Tawatchai Holmes (Andy), Zhedong cao (Barry)
+# Author: Tawatchai Holmes (Andy), Zhedong Cao (Barry)
 # Date:   15 Oct 2020
 # Descr:  Makefile for game
 
@@ -52,21 +52,22 @@ usart1.o: ../../drivers/avr/usart1.c ../../drivers/avr/system.h ../../drivers/av
 prescale.o: ../../drivers/avr/prescale.c ../../drivers/avr/prescale.h ../../drivers/avr/system.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
-
+speaker.o: speaker.c ../../drivers/avr/pio.h ../../drivers/avr/system.h speaker.h ../../utils/pacer.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 
 
 
 
 # Link: create ELF output file from object files.
-game.out: game.o system.o pio.o navswitch.o pacer.o timer.o ir_uart.o button.o led.o timer0.o usart1.o prescale.o
+game.out: game.o system.o pio.o navswitch.o pacer.o timer.o ir_uart.o button.o led.o timer0.o usart1.o prescale.o speaker.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 
 
 # Target: clean project.
 .PHONY: clean
-clean: 
+clean:
 	-$(DEL) *.o *.out *.hex
 
 
