@@ -1,2 +1,2 @@
-Medieval dynasty (Rock, Paper, Sc)
+## Medieval dynasty (Rock, Paper, Scissor Edition)
 Test test test test test
