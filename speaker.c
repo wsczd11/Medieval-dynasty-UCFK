@@ -1,3 +1,9 @@
+/** @file   beep1.c
+    @author Tawatchai Holmes (Andy), Zhedong Cao (Barry)
+    @date   15 OCT 2020
+    @Descr:  Makefile for game
+*/
+
 #include "system.h"
 #include "pio.h"
 #include "pacer.h"
