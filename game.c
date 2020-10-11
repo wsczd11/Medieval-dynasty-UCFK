@@ -32,7 +32,7 @@ Each options consist of 2 wins and 2 loss
 #include "led.h"
 
 
-/* Define PIO pins driving LED matrix rows.  */
+/* Define PIO pins driving LED matrix rows. */
 static const pio_t rows[] = {
     LEDMAT_ROW1_PIO, LEDMAT_ROW2_PIO, LEDMAT_ROW3_PIO,
     LEDMAT_ROW4_PIO, LEDMAT_ROW5_PIO, LEDMAT_ROW6_PIO,
@@ -40,7 +40,7 @@ static const pio_t rows[] = {
 };
 
 
-/* Define PIO pins driving LED matrix columns.  */
+/* Define PIO pins driving LED matrix columns. */
 static const pio_t cols[] = {
     LEDMAT_COL1_PIO, LEDMAT_COL2_PIO, LEDMAT_COL3_PIO,
     LEDMAT_COL4_PIO, LEDMAT_COL5_PIO
