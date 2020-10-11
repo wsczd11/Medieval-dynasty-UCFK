@@ -1,5 +1,5 @@
 /** @file:      led.c
-    @author:    Tawatchai Holmes (Andy), Zhedong Cao (Barry)
+    @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
     @Descr:     Led functions use in game.c
 */
