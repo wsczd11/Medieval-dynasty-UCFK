@@ -1,7 +1,7 @@
 /** @file:      beep1.c
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Speaker function in .h form
+    @Descr:     Speaker function in .h format
 */
 
 #ifndef SPEAKER_H
