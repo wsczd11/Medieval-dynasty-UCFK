@@ -1,8 +1,8 @@
 /** @file:      game.c
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Main game file 
-    
+    @Descr:     Main game file
+
 The game is similar to the normal Rock, Paper and Scissor, but instead
 of 3 options we got 5 options to choose from between the player
 
@@ -29,6 +29,7 @@ Each options consist of 2 wins and 2 loss
 #include "ir_uart.h"
 #include "button.h"
 #include "led.h"
+#include "speaker.h"
 
 
 /* Define PIO pins driving LED matrix rows. */
@@ -305,7 +306,5 @@ int main (void)
                 break;
             }
         }
-
     }
 }
-

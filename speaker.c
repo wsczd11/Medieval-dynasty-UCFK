@@ -21,7 +21,7 @@ void init_speaker(void)
 
 
 /* Output sound from speaker */
-void use_speaker()
+void use_speaker(void)
 {
     pio_output_toggle (PIEZO1_PIO);
     pio_output_toggle (PIEZO2_PIO);
