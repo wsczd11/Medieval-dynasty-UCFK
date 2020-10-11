@@ -5,6 +5,7 @@
 #include "ir_uart.h"
 #include "button.h"
 #include "led.h"
+#include "tinygl.h"
 
 
 
@@ -69,6 +70,38 @@ static void display_column (uint8_t row_pattern, uint8_t current_column)
         }
     }
 }
+
+
+static void choose_game()
+{
+    char character1 = '1';
+    char character2 = '2';
+
+    tinygl_init(500);
+    tinygl_font_set (&font5x7_1);
+    tinygl_text_speed_set (10);
+
+    navswitch_init();
+
+    pacer_init(500);
+
+    while(1)
+    {
+        pacer_wait ();
+        tinygl_update ();
+        navswitch_update();
+
+        if (navswitch_push_event_p(NAVSWITCH_WEST)) {
+            return character1;
+        }
+
+        if (navswitch_release_event_p(NAVSWITCH_EAST)) {
+            return character2;
+        }
+}
+
+
+
 
 // If player1_choice win, return 0, else return 1. (Compare)
 static int compare_choice(uint8_t player1_choice, uint8_t player2_choice)
@@ -175,7 +208,7 @@ static void job(uint8_t current_choice, uint8_t current_column)
         pacer_wait();
         display_column (turnoff_screen[current_column], current_column);
         if (button_pressed_p()) {
-            ir_uart_putc (current_choice + 1);
+            ir_uart_putc(current_choice + 1);
         }
         if (ir_uart_read_ready_p()) {
             partner_choice = ir_uart_getc() - 1;
