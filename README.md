@@ -7,4 +7,5 @@ of 3 options, we got 5 options to choose from between the player
   - Human
   - Gun
   - Grenade
-
+- Each options consis of 2 wins and 2 loss
+  - Sword ***beats*** Grenade and Shield, but ***lose*** to Gun and Human
