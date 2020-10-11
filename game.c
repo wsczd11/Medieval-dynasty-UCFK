@@ -31,10 +31,6 @@ static const uint8_t bitmap[] = {
     0x00, 0x38, 0x3E, 0x3A, 0x00       //grenade
 };
 
-//Turn off the screen
-static const uint8_t turnoff_screen[] = {
-    0x00, 0x00, 0x00, 0x00, 0x00,
-};
 
 //Display the letter 'W'
 static const uint8_t winner_screen[] = {
@@ -43,13 +39,23 @@ static const uint8_t winner_screen[] = {
 
 //Display the letter 'L'
 static const uint8_t loser_screen[] = {
-    0x00, 0x3F, 0x20, 0x20, 0x00
+    0x00, 0x3E, 0x20, 0x20, 0x00
 };
 
 //Display the letter 'S'
 static const uint8_t equal_screen[] = {
     0x00, 0x24, 0x2A, 0x12, 0x00
 };
+
+static void inf(void)
+{
+    for (int i = 0; i < 5; i++) {
+        pio_config_set(cols[i], PIO_OUTPUT_HIGH);
+    }
+    for (int j = 0; j < 7; j++) {
+        pio_config_set(rows[j], PIO_OUTPUT_HIGH);
+    }
+}
 
 static void display_column (uint8_t row_pattern, uint8_t current_column)
 {
@@ -168,34 +174,31 @@ static void equal_display(uint8_t current_choice, uint8_t current_column)
     }
 }
 
-static void job(uint8_t current_choice, uint8_t current_column)
+static int job(uint8_t current_choice, uint8_t current_column)
 {
-    uint8_t partner_choice = 5;
+    uint8_t partner_choice;
+    inf();
     while(1) {
         pacer_wait();
-        display_column (turnoff_screen[current_column], current_column);
+
         if (button_pressed_p()) {
             ir_uart_putc (current_choice + 1);
         }
         if (ir_uart_read_ready_p()) {
             partner_choice = ir_uart_getc() - 1;
-
             if (partner_choice != 0 && partner_choice != 1 && partner_choice != 2 && partner_choice != 3 && partner_choice != 4) {
                 continue;
             } else if (current_choice == partner_choice) {
                 equal_display(current_choice, current_column);
-                partner_choice = 5;
-                break;
+                return 0;
             } else if (compare_choice(current_choice, partner_choice) == 0) {
                 //current_choice win
                 winner_display(current_choice, current_column);
-                partner_choice = 5;
-                break;
+                return 1;
             } else {
                 //partner_choice win
                 loser_display(current_choice, current_column);
-                partner_choice = 5;
-                break;
+                return 0;
             }
         }
         current_column++;
@@ -209,6 +212,7 @@ int main (void)
 {
     uint8_t current_choice = 0;
     uint8_t current_column = 0;
+    uint16_t number = 0;
 
     system_init ();
     pacer_init (500);
@@ -218,44 +222,51 @@ int main (void)
     led_init ();
 
     /* TODO: Initialise LED matrix pins.  */
-    for (int i = 0; i < 5; i++) {
-        pio_config_set(cols[i], PIO_OUTPUT_HIGH);
-    }
-    for (int j = 0; j < 7; j++) {
-        pio_config_set(rows[j], PIO_OUTPUT_HIGH);
-    }
+    inf();
 
-        while (1) {
-            pacer_wait ();
+    while (1) {
+        pacer_wait ();
 
-            navswitch_update ();
+        navswitch_update ();
 
-            if (navswitch_push_event_p (NAVSWITCH_EAST)) {
-                if (current_choice == 4) {
-                    current_choice = 0;
-                } else {
-                    current_choice++;
-                }
-            }
-            if (navswitch_push_event_p (NAVSWITCH_WEST)) {
-                if (current_choice == 0) {
-                    current_choice = 4;
-                } else {
-                    current_choice--;
-                }
-            }
-
-            display_column (bitmap[current_choice * 5 + current_column], current_column);
-
-            current_column++;
-
-            if (current_column > (LEDMAT_COLS_NUM - 1)) {
-                current_column = 0;
-            }
-
-            if (navswitch_push_event_p (NAVSWITCH_NORTH)) {
-                job(current_choice, current_column);
+        if (navswitch_push_event_p (NAVSWITCH_EAST)) {
+            if (current_choice == 4) {
+                current_choice = 0;
+            } else {
+                current_choice++;
             }
         }
+        if (navswitch_push_event_p (NAVSWITCH_WEST)) {
+            if (current_choice == 0) {
+                current_choice = 4;
+            } else {
+                current_choice--;
+            }
+        }
+
+        display_column (bitmap[current_choice * 5 + current_column], current_column);
+
+        current_column++;
+
+        if (current_column == 5) {
+            current_column = 0;
+        }
+        if (navswitch_push_event_p (NAVSWITCH_NORTH)) {
+            number += job(current_choice, current_column);
+        }
+        if (number == 3){
+            ir_uart_putc ('A');
+            inf();
+            break;
+        }
+        if (ir_uart_read_ready_p()) {
+            if (ir_uart_getc() == 'A'){
+                led_off();
+                inf();
+                break;
+            }
+        }
+
+    }
 }
 
