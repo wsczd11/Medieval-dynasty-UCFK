@@ -1,7 +1,7 @@
-/** @file   button.c
-    @author Tawatchai Holmes (Andy), Zhedong Cao (Barry)
-    @date   15 OCT 2020
-    @Descr:  Makefile for game
+/** @file:      button.c
+    @author:    Tawatchai Holmes (Andy), Zhedong Cao (Barry)
+    @date:       15 OCT 2020
+    @Descr:      Makefile for game
 */
 
 #include "pio.h"
