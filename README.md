@@ -23,7 +23,7 @@ of 3 options we got 5 options to choose from between the player
 6.  Then place the board next to each other and press on the button next to the LED screen to send signal between the boards and it will display either 'W', 'L' or 'S'
     - 'W' = Winner
     - 'L' = Loser
-    - 'S' = Same or Tie
+    - 'S' = Same/Tie
 7. Repeat this process till one of the player wins 3 games
 8. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still have it on plus sound from the speaker
 
