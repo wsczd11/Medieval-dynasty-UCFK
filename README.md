@@ -15,7 +15,7 @@ of 3 options we got 5 options to choose from between the player
   - Grenade ***beats*** Human and Shield, but ***lose*** to Sword and Gun
 
 ## HOW TO PLAY (FIRST TO 3 GAMES)
-1.  Create a folder using "git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git".
+1.  Using your terminal create a folder using "git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git". 
 2.  Double click on the folder and open terminal.
 3.  Both players will type "Make" into the terminal to compile the game and "Make program" after the compile has finish to play the game.
 4.  LED Screen and Blue LED should light up on both boards and players can choose between the 5 options using the navswitch by going right, left.
