@@ -107,17 +107,18 @@ static int compare_choice(uint8_t player1_choice, uint8_t player2_choice)
 }
 
 //Display 'W' on Winner screen
-static void winner_display(void)
+static void winner_display(uint8_t current_choice, uint8_t current_column)
 {
-    uint8_t current_column = 0;
-    pacer_wait();
     while (1) {
         pacer_wait();
         navswitch_update ();
         display_column (winner_screen[current_column], current_column);
         current_column++;
-        if (current_column == 4) {
+        if (current_column == 5) {
             current_column = 0;
+        }
+        if (button_pressed_p()) {
+            ir_uart_putc (current_choice + 1);
         }
         if (navswitch_push_event_p (NAVSWITCH_PUSH)) {
             break;
@@ -127,10 +128,8 @@ static void winner_display(void)
 
 
 //Display 'L' on Loser screen
-static void loser_display(void)
+static void loser_display(uint8_t current_choice, uint8_t current_column)
 {
-    uint8_t current_column = 0;
-    pacer_wait();
     while (1) {
         pacer_wait();
         navswitch_update ();
@@ -138,6 +137,9 @@ static void loser_display(void)
         current_column++;
         if (current_column == 5) {
             current_column = 0;
+        }
+        if (button_pressed_p()) {
+            ir_uart_putc (current_choice + 1);
         }
         if (navswitch_push_event_p (NAVSWITCH_PUSH)) {
             break;
@@ -147,10 +149,8 @@ static void loser_display(void)
 
 
 //Display 'S' on both of the screen when they have the same choice
-static void equal_display(void)
+static void equal_display(uint8_t current_choice, uint8_t current_column)
 {
-    uint8_t current_column = 0;
-    pacer_wait();
     while (1) {
         pacer_wait();
         navswitch_update ();
@@ -159,16 +159,18 @@ static void equal_display(void)
         if (current_column == 5) {
             current_column = 0;
         }
+        if (button_pressed_p()) {
+            ir_uart_putc (current_choice + 1);
+        }
         if (navswitch_push_event_p (NAVSWITCH_PUSH)) {
             break;
         }
     }
 }
 
-static void job(uint8_t current_choice)
+static void job(uint8_t current_choice, uint8_t current_column)
 {
-    uint8_t current_column = 0;
-    uint8_t partner_choice;
+    uint8_t partner_choice = 5;
     while(1) {
         pacer_wait();
         display_column (turnoff_screen[current_column], current_column);
@@ -178,30 +180,21 @@ static void job(uint8_t current_choice)
         if (ir_uart_read_ready_p()) {
             partner_choice = ir_uart_getc() - 1;
 
-            if (partner_choice != 0 && partner_choice != 1 && partner_choice != 2 && partner_choice != 3 && partner_choice != 4 && partner_choice == 5 && partner_choice == 6 && partner_choice == 7) {
+            if (partner_choice != 0 && partner_choice != 1 && partner_choice != 2 && partner_choice != 3 && partner_choice != 4) {
                 continue;
-            } else if (partner_choice == 5) {
-                loser_display();
-                break;
-            } else if (partner_choice == 6) {
-                winner_display();
-                break;
-            } else if (partner_choice == 7) {
-                equal_display();
-                break;
             } else if (current_choice == partner_choice) {
-                ir_uart_putc (7 + 1);
-                equal_display();
+                equal_display(current_choice, current_column);
+                partner_choice = 5;
                 break;
             } else if (compare_choice(current_choice, partner_choice) == 0) {
                 //current_choice win
-                ir_uart_putc (5 + 1);
-                winner_display();
+                winner_display(current_choice, current_column);
+                partner_choice = 5;
                 break;
             } else {
                 //partner_choice win
-                ir_uart_putc (6 + 1);
-                loser_display();
+                loser_display(current_choice, current_column);
+                partner_choice = 5;
                 break;
             }
         }
@@ -261,7 +254,7 @@ int main (void)
             }
 
             if (navswitch_push_event_p (NAVSWITCH_NORTH)) {
-                job(current_choice);
+                job(current_choice, current_column);
             }
         }
 }
