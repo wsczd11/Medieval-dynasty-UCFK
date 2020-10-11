@@ -1,7 +1,7 @@
 /** @file:      led.c
     @author:    Tawatchai Holmes (Andy), Zhedong Cao (Barry)
     @date:      15 OCT 2020
-    @Descr:     Led function use in game.c
+    @Descr:     Led functions use in game.c
 */
 
 #include "pio.h"
