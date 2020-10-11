@@ -1,4 +1,4 @@
-/** @file:      beep1.c
+/** @file:      game.c
     @author:    Tawatchai Holmes (Andy), Zhedong Cao (Barry)
     @date:      15 OCT 2020
     @Descr:     Main game file 
