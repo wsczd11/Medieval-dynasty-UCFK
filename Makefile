@@ -1,6 +1,6 @@
 # File:   Makefile
-# Author: M. P. Hayes, UCECE
-# Date:   12 Sep 2010
+# Author: Tawatchai Holmes (Andy), Zhedong cao (Barry)
+# Date:   15 Oct 2020
 # Descr:  Makefile for game
 
 # Definitions.
