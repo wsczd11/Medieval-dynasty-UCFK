@@ -55,12 +55,29 @@ prescale.o: ../../drivers/avr/prescale.c ../../drivers/avr/prescale.h ../../driv
 speaker.o: speaker.c ../../drivers/avr/pio.h ../../drivers/avr/system.h speaker.h ../../utils/pacer.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
+compare.o: compare.c ../../drivers/avr/system.h compare.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
+start.o: start.c ../../drivers/avr/system.h ../../drivers/display.h ../../fonts/font5x7_1.h ../../utils/font.h ../../utils/pacer.h ../../utils/tinygl.h start.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
+tinygl.o: ../../utils/tinygl.c ../../drivers/avr/system.h ../../drivers/display.h ../../utils/font.h ../../utils/tinygl.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
+display.o: ../../drivers/display.c ../../drivers/avr/system.h ../../drivers/display.h ../../drivers/ledmat.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+ledmat.o: ../../drivers/ledmat.c ../../drivers/avr/pio.h ../../drivers/avr/system.h ../../drivers/ledmat.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+font.o: ../../utils/font.c ../../drivers/avr/system.h ../../utils/font.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+icon.o: icon.c ../../drivers/avr/pio.h ../../drivers/avr/system.h ../../utils/pacer.h ../../drivers/navswitch.h icon.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 # Link: create ELF output file from object files.
-game.out: game.o system.o pio.o navswitch.o pacer.o timer.o ir_uart.o button.o led.o timer0.o usart1.o prescale.o speaker.o
+game.out: game.o system.o pio.o navswitch.o pacer.o timer.o ir_uart.o button.o led.o timer0.o usart1.o prescale.o speaker.o compare.o start.o tinygl.o display.o ledmat.o font.o icon.o
 	$(CC) $(CFLAGS) $^ -o $@ -lm
 	$(SIZE) $@
 
