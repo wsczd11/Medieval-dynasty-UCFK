@@ -31,8 +31,9 @@ Each options consist of 2 wins and 2 loss
 #include "led.h"
 #include "speaker.h"
 
-
-/* Define PIO pins driving LED matrix rows. */
+/**
+ * @brief:Define PIO pins driving LED matrix rows.
+*/
 static const pio_t rows[] = {
     LEDMAT_ROW1_PIO, LEDMAT_ROW2_PIO, LEDMAT_ROW3_PIO,
     LEDMAT_ROW4_PIO, LEDMAT_ROW5_PIO, LEDMAT_ROW6_PIO,
@@ -40,14 +41,18 @@ static const pio_t rows[] = {
 };
 
 
-/* Define PIO pins driving LED matrix columns. */
+/**
+ * @brief:Define PIO pins driving LED matrix columns.
+*/
 static const pio_t cols[] = {
     LEDMAT_COL1_PIO, LEDMAT_COL2_PIO, LEDMAT_COL3_PIO,
     LEDMAT_COL4_PIO, LEDMAT_COL5_PIO
 };
 
 
-/* Different choices for the game */
+/**
+ * @brief:Different choices for the game
+*/
 static const uint8_t bitmap[] = {
     0x00, 0x10, 0x3E, 0x10, 0x00,      //Sword
     0x00, 0x1E, 0x3E, 0x1E, 0x00,      //Shield
@@ -56,8 +61,9 @@ static const uint8_t bitmap[] = {
     0x00, 0x38, 0x3E, 0x3A, 0x00       //Grenade
 };
 
-
-/* Display the letter 'W' */
+/**
+ * @brief:Display the letter 'W'
+*/
 static const uint8_t winner_screen[] = {
     0x0E, 0x30, 0x0E, 0x30, 0x0E
 };
