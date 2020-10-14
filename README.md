@@ -27,7 +27,8 @@ of 3 options we got 5 options to choose from:
     - `'W'` = Winner
     - `'L'` = Loser
     - `'S'` = Same/Tie
-9. Repeat this process till one of the players wins 3 games. (At the end of each round a sound will start to play on one of the player's speaker when they lost the round)
-10. After one of the players have won 3 game. A `"YOU LOSS!"` text will display on the board of the player who lost the game plus the speaker will turn on signifying that you lost the game and `"YOU WON!"` text on the board of the player who won the game.
-11. To restart the game both players will press on Button A then and quickly press Button B on their board, this will return to the starting screen and the player can move the nav switch to play again.
+9.  After the board have displayed the outcome of that round. The player will have to press on the nav switch to go to the next round.
+10. Repeat this process till one of the players wins 3 games. (At the end of each round a sound will start to play on one of the player's speaker when they lost the round)
+11. After one of the players have won 3 game. A `"YOU LOSS!"` text will display on the board of the player who lost the game plus the speaker will turn on signifying that you lost the game and `"YOU WON!"` text on the board of the player who won the game.
+12. To restart the game both players will press on Button A then and quickly press Button B on their board, this will return to the starting screen and the player can move the nav switch to play again.
 
