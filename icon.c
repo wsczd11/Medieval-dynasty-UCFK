@@ -46,6 +46,8 @@ void ledm_init(void)
 
 /**
  * @brief: Display the LED on screen
+ * @param: row partterns
+ * @param: current column
 */
 void display_column(uint8_t row_pattern, uint8_t current_column)
 {
