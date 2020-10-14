@@ -1,7 +1,7 @@
 /** @file:      button.c
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Button functions use in game.c
+    @brief:     Button functions use in game.c
 */
 
 #include "pio.h"
