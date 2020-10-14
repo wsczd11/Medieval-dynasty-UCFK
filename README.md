@@ -23,10 +23,11 @@ of 3 options we got 5 options to choose from:
 5.  Both players can move the nav switch in any direction to start the game. 
 6.  Using the nav switch, moving it left and right to select the choice you want to choose.
 7.  After both of the players have decide their selection, push up on the nav switch to lock in what you have selected, LED screen will turn off so your opponent can't see what you chose.
-8.  Then place the board next to each other and press on the button2 next to the LED screen to send signal between the boards and it will display either 'W', 'L' or 'S':
+8.  Then place the board next to each other and press on the Button B next to the LED screen to send signal between the boards and it will display either 'W', 'L' or 'S':
     - 'W' = Winner
     - 'L' = Loser
     - 'S' = Same/Tie
-9. Repeat this process till one of the player wins 3 games. Everytime the person lost the round the speaker will start playing sound.
-10. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still be on.
+9. Repeat this process till one of the player wins 3 games. Everytime the person lost the round the speaker will start playing sounds on the loser's board.
+10. After one of the players have won 3 games, the player that loss will have text on their screen saying "YOU LOSS!" with speaker sounds and winner saying "YOU WON!" with no speaker sound.
+11. To play the game again both players will press on Button A then Button B, this will restart the game.
 
