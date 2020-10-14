@@ -1,7 +1,9 @@
 /** @file:      game.c
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @brief:     Main game file
+    @brief:     Compare both of the players selection and determine which player wins
+    @brief:     by displaying "Winner" or "Loser" text after one of the player wins 3 games and each round.
+    
 The game is similar to the normal Rock, Paper and Scissor, but instead
 of 3 options we got 5 options to choose from between the player
 
@@ -19,8 +21,7 @@ Each options consist of 2 wins and 2 loss
 -Gun beats Grenade and Sword, but lose to Shield and Human
 -Grenade beats Human and Shield, but lose to Sword and Gun
 
-Compare both of the players selection and determine which player wins
-by displaying "Winner" or "Loser" text after one of the player wins 3 games.
+
 */
 
 #include "system.h"
