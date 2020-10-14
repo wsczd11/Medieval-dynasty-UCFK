@@ -8,11 +8,16 @@
 #define BUTTON_H
 
 
-/* Return non-zero if button pressed. */
+/**
+ * @return: non-zero if button pressed.
+*/
+
 int button_pressed_p (void);
 
 
-/* Initialise button1. */
+/**
+ * @brief: Initialising the button
+*/
 void button_init (void);
 
 
