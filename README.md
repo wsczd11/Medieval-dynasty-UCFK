@@ -22,11 +22,11 @@ of 3 options we got 5 options to choose from:
 4.  LED Screen and Blue LED should light up on both boards and players showing "WELECOME TO MEDIEVAL DYNASTY, MOVIE NAVSWITCH TO START".
 5.  Both players can move the nav switch to any direction to start the game. 
 6.  Using the nav switch, moving it left and right to select which option the player will go for.
-6.  After both of the players have decide their selection, push up on the nav switch to lock in what you have selected, LED screen will turn off so your opponent can't see what you chose.
-7.  Then place the board next to each other and press on the button next to the LED screen to send signal between the boards and it will display either 'W', 'L' or 'S':
+7.  After both of the players have decide their selection, push up on the nav switch to lock in what you have selected, LED screen will turn off so your opponent can't see what you chose.
+8.  Then place the board next to each other and press on the button next to the LED screen to send signal between the boards and it will display either 'W', 'L' or 'S':
     - 'W' = Winner
     - 'L' = Loser
     - 'S' = Same/Tie
-8. Repeat this process till one of the player wins 3 games. Everytime the person lost the round the speaker will start playing sound.
-9. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still be on.
+9. Repeat this process till one of the player wins 3 games. Everytime the person lost the round the speaker will start playing sound.
+10. After one of the player have won 3 games, the player that loss will have their Blue LED turn off and winner will still be on.
 
