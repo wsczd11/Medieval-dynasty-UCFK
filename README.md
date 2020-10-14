@@ -23,7 +23,7 @@ of 3 options we got 5 options to choose from:
 5.  Both players can move the nav switch in any direction to start the game. 
 6.  Using the nav switch, moving it left and right will let the player select their choice.
 7.  After you have decided what they want to choose, push up on the nav switch to lock in what you have selected, LED screen will turn off so your opponent can't see what you chose.
-8.  Then place the board next to each other and press on Button B next to the LED screen to send signal between the boards and the LED screen will display either 'W', 'L' or 'S':
+8.  Then place the board next to each other and press on Button B next to the LED screen to send signal between the boards and the LED screen will display either `'W'`, `'L'` or `'S'`:
     - `'W'` = Winner
     - `'L'` = Loser
     - `'S'` = Same/Tie
