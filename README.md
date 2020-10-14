@@ -18,7 +18,7 @@ of 3 options we got 5 options to choose from:
 ![Funkit](/uploads/49118eeb09db0da9e853500c14962bec/Funkit.jpg)
 1.  Using your terminal create a folder using "git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git". (Folder can be created anywhere) Enter your UC id and password.
 2.  Double click on the folder and open terminal.
-3.  Both players will type "Make" into the terminal to compile the game and "Make program" after the compile has finish to play the game.
+3.  Both players will type `"Make"` into the terminal to compile the game and `"Make program"` after the compile has finish to play the game.
 4.  LED Screen and Blue LED should light up on both boards and the LED screen should display `"WELCOME TO MEDIEVAL DYNASTY, MOVE NAVSWITCH TO START"`.
 5.  Both players can move the nav switch in any direction to start the game. 
 6.  Using the nav switch, moving it left and right will let the player select their choice.
@@ -28,6 +28,6 @@ of 3 options we got 5 options to choose from:
     - `'L'` = Loser
     - `'S'` = Same/Tie
 9. Repeat this process till one of the players wins 3 games. (At the end of each round a sound will start to play on one of the player's speaker when they lost the round)
-10. After one of the players have won 3 game. A `"YOU LOSS!"` text will display on the board of the player who lost the game and `"YOU WON!"` on the board of the player who won the game.
-11. To restart the game both players will press on Button A then and quickly press Button B on their board, this will return to the starting screen.
+10. After one of the players have won 3 game. A `"YOU LOSS!"` text will display on the board of the player who lost the game plus the speaker will turn on signifying that you lost the game and `"YOU WON!"` text on the board of the player who won the game.
+11. To restart the game both players will press on Button A then and quickly press Button B on their board, this will return to the starting screen and the player can move the nav switch to play again.
 
