@@ -1,7 +1,7 @@
 /** @file:       speaker.c
     @author:     Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:       15 OCT 2020
-    @Descr:      Speaker function used in game.c to give the speaker sound
+    @brief:      Speaker function used in game.c to give the speaker sound
 */
 
 #include "system.h"
@@ -11,8 +11,9 @@
 #define PIEZO1_PIO PIO_DEFINE (PORT_D, 4)
 #define PIEZO2_PIO PIO_DEFINE (PORT_D, 6)
 
-
-/* Initialise speaker */
+/**
+ * @brief: Initilise speaker
+*/
 void init_speaker(void)
 {
     pio_config_set (PIEZO1_PIO, PIO_OUTPUT_LOW);
@@ -20,7 +21,9 @@ void init_speaker(void)
 }
 
 
-/* Output sound from speaker */
+/**
+ * @brief: Output sound from speaker
+*/
 void use_speaker(void)
 {
     pio_output_toggle (PIEZO1_PIO);
