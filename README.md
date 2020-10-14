@@ -16,7 +16,7 @@ of 3 options we got 5 options to choose from:
 
 ## HOW TO PLAY (FIRST TO WIN 3 GAMES)
 ![Funkit](/uploads/49118eeb09db0da9e853500c14962bec/Funkit.jpg)
-1.  Using your terminal create a folder using "git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git". (Folder can be created anywhere) Enter your UC id and password.
+1.  Using your terminal create a folder using `"git clone https://eng-git.canterbury.ac.nz/ence260-2020/group-205.git"`. (Folder can be created anywhere) Enter your UC id and password.
 2.  Double click on the folder and open terminal.
 3.  Both players will type `"Make"` into the terminal to compile the game and `"Make program"` after the compile has finish to play the game.
 4.  LED Screen and Blue LED should light up on both boards and the LED screen should display `"WELCOME TO MEDIEVAL DYNASTY, MOVE NAVSWITCH TO START"`.
