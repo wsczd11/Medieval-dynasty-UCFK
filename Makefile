@@ -1,7 +1,7 @@
 # File:   Makefile
 # Author: Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
 # Date:   15 Oct 2020
-# Descr:  Makefile for game.c include all the other source that was used
+# Descr:  Makefile for game.c include all the other source that is used
 
 # Definitions.
 CC = avr-gcc
