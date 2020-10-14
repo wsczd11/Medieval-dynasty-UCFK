@@ -197,7 +197,7 @@ int main (void)
         if (number == 3) {
             ir_uart_putc ('A');
             ledm_init();
-            words_display("YOU WIN!"); //Display on winner screen
+            words_display("YOU WON!"); //Display on winner screen
             break;
         }
         if (ir_uart_read_ready_p()) {
