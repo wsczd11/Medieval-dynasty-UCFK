@@ -1,7 +1,7 @@
 /** @file:      button.h
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Button functions in .h format
+    @brief:     Button functions in .h format
 */
 
 #ifndef BUTTON_H
