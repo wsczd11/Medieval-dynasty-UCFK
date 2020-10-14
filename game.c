@@ -35,6 +35,35 @@ Each options consist of 2 wins and 2 loss
 #include "icon.h"
 
 
+/**
+ * @brief:Different choices for the game
+*/
+static const uint8_t bitmap[] = {
+    0x00, 0x10, 0x3E, 0x10, 0x00,      //Sword
+    0x00, 0x1E, 0x3E, 0x1E, 0x00,      //Shield
+    0x00, 0x28, 0x1C, 0x28, 0x00,      //Human
+    0x04, 0x04, 0x0C, 0x04, 0x1C,      //Gun
+    0x00, 0x38, 0x3E, 0x3A, 0x00       //Grenade
+};
+
+
+/*Display the letter 'W'*/
+static const uint8_t winner_screen[] = {
+    0x0E, 0x30, 0x0E, 0x30, 0x0E
+};
+
+
+/* Display the letter 'L' */
+static const uint8_t loser_screen[] = {
+    0x00, 0x3E, 0x20, 0x20, 0x00
+};
+
+
+/* Display the letter 'S' */
+static const uint8_t equal_screen[] = {
+    0x00, 0x24, 0x2A, 0x12, 0x00
+};
+
 /* Display 'W' on Winner screen if the player wins
  * Display 'L' on Loser screen if the player loss
  * Display 'S' on both of the screen when both of the player
@@ -44,7 +73,15 @@ static int result_display(uint8_t Player_1, uint8_t current_column, char key)
     while (1) {
         pacer_wait();
         navswitch_update();
-        setting_saver(key, 0, current_column);
+        if (key == 'W') {
+            display_column (winner_screen[current_column], current_column);
+        } else if (key == 'L') {
+            display_column (loser_screen[current_column], current_column);
+        } else if (key == 'S') {
+            display_column (equal_screen[current_column], current_column);
+        }
+        current_column++;
+
         if (current_column == 5) {
             current_column = 0;
         }
@@ -132,7 +169,8 @@ int main (void)
             }
         }
 
-        setting_saver('N', Player_1, current_column);
+        display_column(bitmap[Player_1 * 5 + current_column], current_column);
+        current_column++;
 
         if (current_column == 5) {
             current_column = 0;

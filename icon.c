@@ -23,38 +23,6 @@ static const pio_t cols[] = {
 };
 
 
-/**
- * @brief:Different choices for the game
-*/
-static const uint8_t bitmap[] = {
-    0x00, 0x10, 0x3E, 0x10, 0x00,      //Sword
-    0x00, 0x1E, 0x3E, 0x1E, 0x00,      //Shield
-    0x00, 0x28, 0x1C, 0x28, 0x00,      //Human
-    0x04, 0x04, 0x0C, 0x04, 0x1C,      //Gun
-    0x00, 0x38, 0x3E, 0x3A, 0x00       //Grenade
-};
-
-
-/**
- * @brief:Display the letter 'W'
-*/
-static const uint8_t winner_screen[] = {
-    0x0E, 0x30, 0x0E, 0x30, 0x0E
-};
-
-
-/* Display the letter 'L' */
-static const uint8_t loser_screen[] = {
-    0x00, 0x3E, 0x20, 0x20, 0x00
-};
-
-
-/* Display the letter 'S' */
-static const uint8_t equal_screen[] = {
-    0x00, 0x24, 0x2A, 0x12, 0x00
-};
-
-
 /* Initilise the LED Metrics */
 void ledm_init(void)
 {
@@ -82,17 +50,3 @@ void display_column(uint8_t row_pattern, uint8_t current_column)
 }
 
 
-void setting_saver(char key, uint8_t Player_1, uint8_t current_column)
-{
-    if (key == 'W') {
-        display_column (winner_screen[current_column], current_column);
-    } else if (key == 'L') {
-        display_column (loser_screen[current_column], current_column);
-    } else if (key == 'S') {
-        display_column (equal_screen[current_column], current_column);
-    } else {
-        display_column(bitmap[Player_1 * 5 + current_column], current_column);
-    }
-    current_column++;
-
-}
