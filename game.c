@@ -102,6 +102,7 @@ static int result_display(uint8_t Player_1, uint8_t current_column, char key)
 static int determine_outcome(uint8_t Player_1, uint8_t current_column)
 {
     uint8_t Player_2;
+    uint16_t time_count = 0;
     ledm_init();
     while(1) {
         pacer_wait();
@@ -123,6 +124,11 @@ static int determine_outcome(uint8_t Player_1, uint8_t current_column)
                 result_display(Player_1, current_column, 'L'); //Player_2 win
                 return 0;
             }
+        }else if(time_count > 1000){
+            words_display("TIME OUT, PUSH TO CONTINUE!");
+            time_count = 0;
+        }else{
+            time_count++;
         }
         current_column++;
         if (current_column == 5) {
