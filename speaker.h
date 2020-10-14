@@ -1,7 +1,7 @@
 /** @file:      speaker.h
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Speaker function in .h format
+    @brief:     Speaker function in .h format
 */
 
 #ifndef SPEAKER_H
@@ -15,11 +15,15 @@
 #define PIEZO2_PIO PIO_DEFINE (PORT_D, 6)
 
 
-/* Initialise speaker */
+/**
+ * @brief: Initilise speaker
+*/
 void init_speaker(void);
 
 
-/* Output sound from speaker */
+/**
+ * @brief: Output sound from speaker
+*/
 void use_speaker(void);
 
 #endif

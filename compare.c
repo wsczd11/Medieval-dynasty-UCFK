@@ -1,9 +1,18 @@
+/** @file:      compare.c
+    @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
+    @date:      15 OCT 2020
+    @brief:     compare functions use in game.c
+*/
+
 #include "system.h"
 
 
-/* Comparing the 2 different choices from each of the player
- * If Player1 win, it will return 0 and if Player1 lose
- * it will return 1 */
+/**
+ * @brief: Comparing the 2 different choices from each of the player
+ * @param: Player_1 choice
+ * @param: Player_2 choice
+ * @return: Return 0 if player1 wins, 1 otherwise.
+*/
 int compare_choice(uint8_t Player_1, uint8_t Player_2)
 {
     if (Player_1 == 0) {
