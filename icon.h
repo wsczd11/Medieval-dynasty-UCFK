@@ -1,7 +1,7 @@
 /** @file:      icon.h
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     icon functions in .h format
+    @brief:     icon functions in .h format
 */
 
 #ifndef ICON_H
@@ -12,19 +12,31 @@
 #include "pacer.h"
 #include "navswitch.h"
 
-/*Define PIO pins driving LED matrix rows.*/
+
+/**
+ * @brief: Define PIO pins driving LED matrix rows.
+*/
+
 static const pio_t rows[];
 
 
-/*Define PIO pins driving LED matrix columns.*/
+/**
+ * @brief: Define PIO pins driving LED matrix columns.
+*/
+
 static const pio_t cols[];
 
 
-/* Initilise the LED Metrics */
+/**
+ * @brief: Initilise the LED Metrics
+*/
+
 void ledm_init(void);
 
 
-/* Display the LED */
+/**
+ * @brief: Display the LED on screen
+*/
 void display_column(uint8_t row_pattern, uint8_t current_column);
 
 
