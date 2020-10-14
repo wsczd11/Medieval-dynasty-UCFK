@@ -1,8 +1,7 @@
 /** @file:      game.c
     @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
     @date:      15 OCT 2020
-    @Descr:     Main game file
-
+    @brief:     Main game file
 The game is similar to the normal Rock, Paper and Scissor, but instead
 of 3 options we got 5 options to choose from between the player
 
@@ -20,6 +19,8 @@ Each options consist of 2 wins and 2 loss
 -Gun beats Grenade and Sword, but lose to Shield and Human
 -Grenade beats Human and Shield, but lose to Sword and Gun
 
+Compare both of the players selection and determine which player wins
+by displaying "Winner" or "Loser" text after one of the player wins 3 games.
 */
 
 #include "system.h"
@@ -36,7 +37,7 @@ Each options consist of 2 wins and 2 loss
 
 
 /**
- * @brief:Different choices for the game
+ * @brief: Different choices for the game
 */
 static const uint8_t bitmap[] = {
     0x00, 0x10, 0x3E, 0x10, 0x00,      //Sword
@@ -47,27 +48,38 @@ static const uint8_t bitmap[] = {
 };
 
 
-/*Display the letter 'W'*/
+/**
+ * @brief: Display the letter 'W'
+*/
 static const uint8_t winner_screen[] = {
     0x0E, 0x30, 0x0E, 0x30, 0x0E
 };
 
 
-/* Display the letter 'L' */
+/**
+ * @brief: Display the letter 'L'
+*/
 static const uint8_t loser_screen[] = {
     0x00, 0x3E, 0x20, 0x20, 0x00
 };
 
 
-/* Display the letter 'S' */
+/**
+ * @brief: Display the letter 'S'
+*/
 static const uint8_t equal_screen[] = {
     0x00, 0x24, 0x2A, 0x12, 0x00
 };
 
-/* Display 'W' on Winner screen if the player wins
- * Display 'L' on Loser screen if the player loss
- * Display 'S' on both of the screen when both of the player
- * have the same choice */
+/** 
+ * @brief: Display 'W' on Winner screen if the player wins
+ * @brief: Display 'L' on Loser screen if the player loss
+ * @brief: Display 'S' on both of the screen when both of the player
+ * @brief: have the same choice
+ * @param: Player_1 choice
+ * @param: current_column
+ * @param: key
+*/
 static int result_display(uint8_t Player_1, uint8_t current_column, char key)
 {
     while (1) {
@@ -95,10 +107,14 @@ static int result_display(uint8_t Player_1, uint8_t current_column, char key)
 }
 
 
-/* Compare both of the input that both of the player have chose and then
- * determine which of the player wins/lose or tie by the if's statement and
- * determine the display winner_display, loser_display or equal_display by the
- * player's choice */
+/** 
+ * @brief: Compare both of the input that both of the player have chose and then
+ * @brief: determine which of the player wins/lose or tie by the if's statement and
+ * @brief: determine the display winner_display, loser_display or equal_display by the
+ * @brief: player's choice 
+ * @param: Player_1 choice
+ * @param: current_column
+*/
 static int determine_outcome(uint8_t Player_1, uint8_t current_column)
 {
     uint8_t Player_2;
@@ -147,7 +163,7 @@ int main (void)
     ledm_init();
     init_speaker();
 
-    words_display("WELECOME TO MEDIEVAL DYNASTY, MOVIE NAVSWITCH TO START");
+    words_display("WELCOME TO MEDIEVAL DYNASTY, MOVE NAVSWITCH TO START");
 
     while (1) {
 
@@ -181,15 +197,15 @@ int main (void)
         if (number == 3) {
             ir_uart_putc ('A');
             ledm_init();
-            words_display("YOU WIN!");
+            words_display("YOU WIN!"); //Display on winner screen
             break;
         }
         if (ir_uart_read_ready_p()) {
-            if (ir_uart_getc() == 'A') { //Turn LED off for player who loss
-                led_off();
+            if (ir_uart_getc() == 'A') { 
+                led_off(); //Turn LED off for player who loss
                 ledm_init();
-                use_speaker();
-                words_display("YOU LOSS!");
+                use_speaker(); //Speaker on
+                words_display("YOU LOSS!"); //Display on loser screen
                 break;
             }
         }
