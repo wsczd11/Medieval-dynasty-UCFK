@@ -1,11 +1,20 @@
+/** @file:      start.c
+    @author:    Tawatchai Holmes (Andy) tho78, Zhedong Cao (Barry) zca19
+    @date:      15 OCT 2020
+    @brief:     Display text at the beginning of the game in game.c
+*/
+
+
 #include "system.h"
 #include "pacer.h"
 #include "tinygl.h"
 #include "../fonts/font5x7_1.h"
 #include "navswitch.h"
 
-
-/* Display a start screen.  */
+/**
+ * @brief: Display start screen
+ * @param: word characters
+*/
 int words_display (char* words)
 {
     system_init();
