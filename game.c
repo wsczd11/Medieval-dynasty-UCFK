@@ -121,7 +121,6 @@ static int result_display(uint8_t Player_1, uint8_t current_column, char key)
 static int determine_outcome(uint8_t Player_1, uint8_t current_column)
 {
     uint8_t Player_2;
-    uint16_t time_count = 0;
     ledm_init();
     while(1) {
         pacer_wait();
